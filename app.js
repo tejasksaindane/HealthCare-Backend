@@ -5,6 +5,7 @@ const app = express();
 // const DB = process.env.DATABASE;
 const PORT = process.env.PORT;
 require("./db/conn");
+// console.log("GITHUB LOG");
 
 //FIXME database
 // mongoose
