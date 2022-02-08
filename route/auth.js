@@ -11,62 +11,62 @@ router.get("/", (req, res) => {
   res.send("hello world from the server router.js");
 });
 // ---------------------------------TODO using promises -------------------------------
-// router.post("/register", (req, res) => {
-//   const { name, email, phone, password } = req.body;
-//   if (!name || !email || !phone || !password) {
-//     return res.status(422).json({ error: "Plz fill the fiel property" });
-//   }
-//   console.log(name);
-//   console.log(email);
-
-//   User.findOne({ email: email })
-//     .then((userExist) => {
-//       if (userExist) {
-//         return res.status(422).json({ error: "email already exist" });
-//       }
-
-//       const user = new User({ name, email, phone, password });
-
-//       user
-//         .save()
-//         .then(() => {
-//           res.status(201).json({ message: "user registered successfully" });
-//         })
-//         .catch((err) => res.status(500).json({ error: "registration failed" }));
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-//   //   res.json({ message: req.body });
-//   //   res.send("mera register page");
-// });
-
-// --------------------------------------TODO using async-Await ------------------
-router.post("/register", async (req, res) => {
+router.post("/registers", (req, res) => {
   const { name, email, phone, password } = req.body;
   if (!name || !email || !phone || !password) {
     return res.status(422).json({ error: "Plz fill the fiel property" });
   }
-  try {
-    const userExist = await User.findOne({ email: email });
-    if (userExist) {
-      return res.status(422).json({ error: "email already exist" });
-    }
+  console.log(name);
+  console.log(email);
 
-    const user = new User({ name, email, phone, password });
-    await user.save();
+  User.findOne({ email: email })
+    .then((userExist) => {
+      if (userExist) {
+        return res.status(422).json({ error: "email already exist" });
+      }
 
-    res.status(201).json({ message: "user registered successfully" });
-  } catch (err) {
-    console.log(err);
-  }
+      const user = new User({ name, email, phone, password });
 
-  //   console.log(name);
-  //   console.log(email);
-
+      user
+        .save()
+        .then(() => {
+          res.status(201).json({ message: "user registered successfully" });
+        })
+        .catch((err) => res.status(500).json({ error: "registration failed" }));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   //   res.json({ message: req.body });
   //   res.send("mera register page");
 });
+
+// --------------------------------------TODO using async-Await ------------------
+// router.post("/registers", async (req, res) => {
+//   const { name, email, phone, password } = req.body;
+//   console.log(">>>>>>>>>>>>>>>>>", req.body);
+//   if (!name || !email || !phone || !password) {
+//     return res.status(422).json({ error: "Plz fill the field property" });
+//   }
+//   try {
+//     const userExist = await User.findOne({ email: email });
+//     if (userExist) {
+//       return res.status(422).json({ error: "email already exist" });
+//     }
+
+//     const user = new User({ name, email, phone, password });
+//     await user.save();
+
+//     res.status(201).json({ message: "user registered successfully" });
+//   } catch (err) {
+//     console.log(err);
+//   }
+
+//   //   console.log(name);
+//   //   console.log(email);
+
+//   res.json({ message: req.body });
+// });
 
 // ----------------------------------  TODO Login route -------------------------------
 router.post("/signin", async (req, res) => {

@@ -2,10 +2,13 @@ require("dotenv").config();
 // const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
+const cors = require("cors");
+app.use(cors());
+
 // const DB = process.env.DATABASE;
 const PORT = process.env.PORT;
 require("./db/conn");
-// console.log("GITHUB LOG");
+// console.log("GITHUB LOG~");
 
 //FIXME database
 // mongoose
