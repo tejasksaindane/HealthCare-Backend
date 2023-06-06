@@ -45,7 +45,7 @@ router.get("/", (req, res) => {
 router.post("/register", async (req, res) => {
   const { name, email, phone, password } = req.body;
   if (!name || !email || !phone || !password) {
-    return res.status(422).json({ error: "Plz fill the fiel property" });
+    return res.status(422).json({ error: "Plz fill the field property" });
   }
   try {
     const userExist = await User.findOne({ email: email });
